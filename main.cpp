@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <ctime>
-#include <windows.h>
 
 #include "item/item.h"
 
@@ -17,7 +16,7 @@ int main(int argc, char *argv[])
 
     Item items[] = {paper, rock, scissors};
 
-    string item;
+    string player_item;
     Item player("", "", "");
 
     Item bot("", "", "");
@@ -25,28 +24,29 @@ int main(int argc, char *argv[])
     for(;;){ // game loop
         cout << "---------------------" << endl;
 
-        srand(time(nullptr));
+        srand(time(0));
         unsigned int rnd = rand() % (sizeof(items) / sizeof(items[0]));
+
+        bot = items[rnd];
 
         cout << "enter stop or s to stop the game" << endl;
         cout << "rock, scissors or paper? \n" << endl;
-        cin >> item;
-        bot = items[rnd];
+        cin >> player_item;
 
-        if(item == "s" || item == "stop"){
+        if(player_item == "s" || player_item == "stop"){
             break;
         }
-        else if(item == paper.get_name()){  // paper
+        else if(player_item.compare(paper.get_name()) == 0){  // paper
             player.set_name(paper.get_name());
             player.set_enemy(paper.get_enemy());
             player.set_super(paper.get_super());
         }
-        else if(item == rock.get_name()){  // rock
+        else if(player_item.compare(rock.get_name()) == 0){  // rock
             player.set_name(rock.get_name());
             player.set_enemy(rock.get_enemy());
             player.set_super(rock.get_super());
         }
-        else if(item == scissors.get_name()){  // scissors
+        else if(player_item.compare(scissors.get_name()) == 0){  // scissors
             player.set_name(scissors.get_name());
             player.set_enemy(scissors.get_enemy());
             player.set_super(scissors.get_super());

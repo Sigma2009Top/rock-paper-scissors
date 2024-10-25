@@ -36,15 +36,10 @@ void Item::set_super(std::string super){
     this->super = super;
 }
 
-
-void Item::lose(){
-    std::cout << "Your lose" << std::endl;
-    std::cout << "Your score: " << score << std::endl;
-}
-
 void Item::attack(std::string attacker){
     if(attacker == enemy){
-        lose();
+        std::cout << "Your lose" << std::endl;
+        std::cout << "Your score: " << score << std::endl;
     }
     else if(attacker == this->name){
         std::cout << "Nobody win" << std::endl;

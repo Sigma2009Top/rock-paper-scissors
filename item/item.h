@@ -11,9 +11,6 @@ private:
 
     unsigned int score = 0;
 
-    void lose();
-
-
 public:
     Item();
     Item(std::string name, std::string enemy, std::string super);
